@@ -62,32 +62,35 @@ body {
     color: var(--md-sys-color-on-background);
 }
 
-.cabecalho-navegacao {
+.cabecalho-navegacao nav {
+  display: flex;
+  align-items: center;
   width: 100%;
   justify-content: space-around;
-  display: flex;
   padding-top: 1.5vw;
+  padding-right: 1.5vw;
   padding-bottom: 1vw;
   border-bottom: 0.2vw solid var(--md-sys-color-outline);
-}
-
-.cabecalho-navegacao h2 {
-  margin-left: 0vw;
-  padding-left: 0vw;
-  margin-top: 0vw;
-  padding-top: 0vw;
 }
 
 .opcoes-cabecalho {
   display: flex;
   gap: 1vw;
-  align-items: center;
   font-size: 2vw;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--md-sys-color-on-background);
+  font-size: 2.5vw;
+  padding: 0 5vw 0 2.5vw;
 }
 
 a {
   text-decoration: none;
   color: var(--md-sys-color-on-background);
-  font-size: 2vw;
-  padding: 1.2vw;
 }
+
+a:hover {
+  color: var(--md-sys-color-surface-tint);
+} 
