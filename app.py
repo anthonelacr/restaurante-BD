@@ -147,20 +147,20 @@ def listar_clientes():
 
 @app.route('/editar-cliente/<int:id_cliente>', methods=['GET', 'POST'])
 def editar_cliente(id_cliente):
-    conn = sqlite3.connect('restaurante.db')
-    cursor = conn.cursor()
+    if request.method == 'GET':
+        conn = sqlite3.connect('restaurante.db')
+        cursor = conn.cursor()
 
-    query = '''
-        SELECT c.id_cliente, c.nome, c.email, c.telefone
-        FROM clientes c
-        WHERE c.id_cliente = ?
-    '''
-    cursor.execute(query, (id_cliente,))
-    cliente = cursor.fetchone()
-    conn.commit()
-    conn.close()
-    
-    return render_template('cadastro_cliente.html', modo='editar', cliente=cliente)
+        query = '''
+            SELECT c.id_cliente, c.nome, c.email, c.telefone
+            FROM clientes c
+            WHERE c.id_cliente = ?
+        '''
+        cursor.execute(query, (id_cliente,))
+        cliente = cursor.fetchone()
+        conn.close()
+        
+        return render_template('cadastro_cliente.html', modo='editar', cliente=cliente)
 
     if request.method == 'POST':
 
@@ -173,9 +173,9 @@ def editar_cliente(id_cliente):
 
         cursor.execute('''
             UPDATE clientes
-            SET id_cliente = ?, nome  = ?, email = ?, telefone = ?
+            SET nome  = ?, email = ?, telefone = ?
             WHERE id_cliente = ?
-        ''', (id_cliente, nome, email, telefone))
+        ''', (nome, email, telefone, id_cliente))
 
         conn.commit()
         conn.close()

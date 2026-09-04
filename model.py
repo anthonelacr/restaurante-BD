@@ -3,8 +3,8 @@ import sqlite3
 conn = sqlite3.connect('restaurante.db')
 cursor = conn.cursor()
 
-cliente = """ 
-    CREATE TABLE IF NOT EXISTS cliente (
+clientes = """ 
+    CREATE TABLE IF NOT EXISTS clientes (
         id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
@@ -19,7 +19,13 @@ pedidos = '''
     nome_prato TEXT NOT NULL,
     valor_unitario DOUBLE NOT NULL,
     qtd_pratos INTEGER NOT NULL,
-    valor_total DOUBLE NOT NULL
+    valor_total DOUBLE NOT NULL,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON DELETE CASCADE
     );
     '''
+
+cursor.execute(clientes)
+cursor.execute(pedidos)
+
+conn.commit()
+conn.close()

@@ -27,7 +27,7 @@
         </header>
 
         <main>  
-            <form class="bloco-formulario">
+            <form class="bloco-formulario" method="POST" action="{{ url_for('editar_cliente', id_cliente=cliente[0]) if modo == 'editar' else url_for('clientes') }}">
                 <div class="cabecalho-formulario">
                     <h1>Cadastrar Cliente</h1>
                 </div>
@@ -36,20 +36,20 @@
 
                     <div class="campo">
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" value="{{ cliente[1] if cliente else '' }}" required>
                     </div>
 
                     <div class="campo">
                         <label for="email">Email</label>
                         <div class="input">
-                            <input type="email" id="email" name="email" placeholder="Ex: joao@exemplo.com" required>
+                            <input type="email" id="email" name="email" placeholder="Ex: joao@exemplo.com" value="{{ cliente[2] if cliente else '' }}" required>
                         </div>
                     </div>
 
                     <div class="campo">
                         <label for="telefone">Telefone</label>
                         <div class="input">
-                            <input type="text" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+                            <input type="text" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" value="{{ cliente[3] if cliente else '' }}" required>
                         </div>
                     </div>
 
