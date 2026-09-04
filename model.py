@@ -14,7 +14,7 @@ cliente = """
 
 pedidos = '''
     CREATE TABLE IF NOT EXISTS pedidos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_pedido INTEGER PRIMARY KEY AUTOINCREMENT,
     id_cliente INTEGER,
     nome_prato TEXT NOT NULL,
     valor_unitario DOUBLE NOT NULL,
