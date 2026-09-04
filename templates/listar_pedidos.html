@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Contatos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Pedidos Cadastrados</h1>
+    <!--id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID Cliente</th>
+                <th>Nome Prato</th>
+                <th>Valor Unitário</th>
+                <th>Quantidade de Pratoss</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contato in contatos %}
+            <tr>
+                <td>{{ contato[0] }}</td>
+                <td>{{ contato[1] }}</td>
+                <td>{{ contato[2] }}</td>
+                <td>{{ contato[3] }}</td>
+                <td>{{ contato[4] }}</td>
+                <td>{{ contato[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br>
+    <a href="/">← Novo Cadastro</a>
+</body>
+</html>
