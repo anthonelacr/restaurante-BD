@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>Gestão de Pedidos</title>
+    </head>
+
+    <body>
+        <header>
+
+            <div class="bloco-formulario">
+                <div class="cabecalho-formulario">
+                    <h2>Cadastrar Pedido</h2>
+                </div>
+
+                <div class="campos-formulario">
+
+                    <div class="campo">
+                        <label for="id_cliente">ID Cliente</label>
+                        <input type="text" id="id_cliente" name="id_cliente" placeholder="Ex: 123" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="nome_prato">Nome Prato</label>
+                        <div class="input">
+                            <input type="nome_prato" id="nome_prato" name="nome_prato" placeholder="Ex: Strogonoff de Frango" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="valor_unitario">Valor Unitário</label>
+                        <div class="input">
+                            <input type="valor_unitario" id="valor_unitario" name="valor_unitario" placeholder="Ex: 13.00" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="qtd_pratos">Quantidade de Pratos</label>
+                        <div class="input">
+                            <input type="qtd_pratos" id="qtd_pratos" name="qtd_pratos" placeholder="Ex: 3" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="valor_total">Valor total</label>
+                        <div class="input">
+                            <input type="valor_total" id="valor_total" name="valor_total" placeholder="Ex: 67.67" required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+    </body>
+
+</html>

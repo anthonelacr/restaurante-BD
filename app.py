@@ -29,8 +29,8 @@ def clientes():
 def pedido():
     if request.method == 'POST':
 
-        nome_prato = request.form['nome_prato']
         id_cliente = request.form['id_cliente']
+        nome_prato = request.form['nome_prato']
         valor_unitario = request.form['valor_unitario']
         qtd_pratos = request.form['qtd_pratos']
         valor_total = request.form['valor_total']
@@ -38,8 +38,8 @@ def pedido():
         conn = sqlite3.connect('restaurante.db')
         cursor = conn.cursor()
         cursor.execute('''INSERT INTO pedido
-            (nome_prato, id_cliente, valor_unitario, qtd_pratos, valor_total) VALUES (?, ?, ?, ?, ?)''', 
-            (nome_prato, id_cliente, valor_unitario, qtd_pratos, valor_total))
+            (id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total) VALUES (?, ?, ?, ?, ?)''', 
+            (id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total))
 
         conn.commit()
         conn.close()
