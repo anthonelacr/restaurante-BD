@@ -48,6 +48,34 @@ def pedido():
                                mensagem=f"Pedido cadastrado com sucesso!")
     return render_template('cadastro_restaurante.html', mensagem=None)
 
+@app.route('/pedido', methods=['GET', 'POST'])
+def pedido():
+    if request.method == 'GET':
+
+        query = '''
+                SELECT co.id_contato, co.nome, co.email, ca.data_cadastro,
+                       t.telefone_res, t.telefone_co, t.telefone_cel,
+                       GROUP_CONCAT(cat.tipo_cadastro, ', ') as tipos
+                FROM contato co
+                LEFT JOIN telefones t ON co.id_telefone = t.id_telefone
+                LEFT JOIN cadastro ca ON co.id_contato = ca.id_contato
+                LEFT JOIN categoria cat ON co.id_contato = cat.id_contato
+                GROUP BY co.id_contato
+                ORDER BY co.nome
+            '''
+
+        conn = sqlite3.connect('restaurante.db')
+        cursor = conn.cursor()
+            
+            
+            cursor.execute(query)
+            pedidos = cursor.fetchall()
+            conn.close()
+    
+    return render_template('listar.html', pedidos=pedidos)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
