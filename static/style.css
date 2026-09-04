@@ -76,13 +76,13 @@ body {
 .opcoes-cabecalho {
   display: flex;
   gap: 1vw;
-  font-size: 2vw;
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .logo {
   text-decoration: none;
   color: var(--md-sys-color-on-background);
-  font-size: 2.8vw;
+  font-size: clamp(1.1rem, 2.8vw, 3rem);
   padding: 0 5vw 0 2.5vw;
 }
 
@@ -101,7 +101,7 @@ a:hover {
   justify-content: center;
   border-radius: 1.1vw;
   border: var(--md-sys-color-secondary) 0.2vw solid;
-  width: 70%;
+  width: 75%;
   margin: 5vw auto;
   padding-bottom: 0.8vw;
 }
@@ -110,16 +110,18 @@ a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 2.5vw;
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
   font-weight: bold;
   border-radius: 1vw 1vw 0 0;
   padding: 0.8vw 1vw;
   background: var(--md-sys-color-secondary);
 }
 
-.cabecalho-formulario h2 {
+.cabecalho-formulario h1 {
   background: var(--md-sys-color-secondary);
   color: var(--md-sys-color-on-secondary);
+  text-align: left;
+  margin-top: 0;
 }
 
 .campos-formulario {
@@ -132,7 +134,7 @@ a:hover {
 }
 
 .campo label {
-  font-size: 2vw;
+  font-size: clamp(1rem, 2vw, 1.8rem);
 }
 
 input {
@@ -142,34 +144,148 @@ input {
   padding: 0.5vw 1vw;
   background: transparent;
   color: var(--md-sys-color-on-background);
-  font-size: 1.8vw;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
   width: 100%;
 }
 
 input:hover {
-  border: var(--md-sys-color-outline) 0.3vw solid;
-  cursor: pointer;
-}
-
-input[type="submit"] {
-  border: var(--md-sys-color-outline) 0.8vw solid;
+  outline: var(--md-sys-color-outline) 0.2vw solid;
   cursor: pointer;
 }
 
 input:focus {
-  outline: var(--md-sys-color-outline) 0.3vw;
+  outline: var(--md-sys-color-outline) 0.2vw solid;
 }
 
 .botaoCadastro {
   display: block;
   margin-left: auto;
-  padding: 0.5vw;
+  padding: 1vw;
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   font-size: 0.9rem;
   font-weight: bold;
-  border: none;
-  border-radius: 8px;
+  border: transparent 0.3vw solid;
+  border-radius: 20px;
   box-shadow: 0px 0px 2px 1px rgba(52, 49, 48, 0.2);
+  cursor: pointer;
+}
+
+.botaoCadastro:hover {
+  border: var(--md-sys-color-outline) 0.3vw solid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background-color: var(--md-sys-color-surface);
+  font-size: clamp(0.9rem, 1.6vw, 1.4rem);
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: var(--md-sys-color-inverse-on-surface);
+}
+
+thead th {
+  text-align: left;
+  padding: 0.8vw;
+}
+
+.novoCadastro {
+  display: flex;
+  width: 15%;
+  margin-bottom: 0.5vw;
+  margin-left: 80%;
+  padding: 0.8vw;
+  background-color: var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-primary-container);
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.novoCadastro:hover {
+  transform: translateY(-2px);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3.2vw, 3rem);
+  text-align: center;
+  margin-top: 2vw;
+}
+
+p {
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  text-align: center;
+  margin: 2vw 6vw;
+}
+
+.colunas-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2vw auto;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.2vw;
+}
+
+.botao-index {
+  position: relative;
+  margin: 0.2vw 2vw 0.2vw 2vw;
+  border: 3px solid var(--md-sys-color-outline);
+  border-radius: 5px;
+  padding: 2vw;
+  width: 80%;
+}
+
+.botao-index:hover {
+  transform: translateY(-2px);
+}
+
+.botao-index h3 {
+  font-size: clamp(1.25rem, 2.5vw, 2.2rem);
+  text-align: center;
+}
+
+.botao-index p {
+  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  text-align: center;
+}
+
+.coluna-acoes {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5vw;
+}
+
+td a {
+  text-decoration: none;
+  font-size: clamp(1.3rem, 1.5vw, 1.8rem);
+  color: var(--md-sys-color-on-background);
+}
+
+td a:hover {
+  transform: translateY(-2px)
+}
+
+.excluir {
+  background: none;
+  border: none;
+  font-size: clamp(1.3rem, 1.5vw, 1.8rem);
+  color: var(--md-sys-color-on-background);
+}
+
+.excluir:hover {
+  transform: translateY(-2px);
   cursor: pointer;
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>Gestão de Clientes</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="cabecalho-navegacao">
+
+                <nav>
+                    <div class="logo">
+                        <a href="/">Restaurante</a>
+                    </div>
+
+                    <a href="/cliente" class="opcao-cabecalho">Cadastrar Clientes</a>
+                    <a href="/pedido" class="opcao-cabecalho">Cadastrar Pedidos</a>
+                    <a href="/listar-clientes" class="opcao-cabecalho">Listar Clientes</a>
+                    <a href="/listar-pedidos" class="opcao-cabecalho">Listar Pedidos</a>
+                </nav>
+            </div>
+        </header>
+
+        <h1>Bem-vindo ao Sistema do Restaurante!</h1>
+
+        <p>
+            O Delivery App é um sistema completo para gerenciar pedidos de delivery:  
+            cadastre clientes e pratos, edite ou remova registros sempre que precisar 
+            — tudo em poucos cliques. Escolha uma das opções abaixo para começar.
+        </p>
+
+        <div class="colunas-index">
+
+            <a href="/cliente" class="botao-index">
+                <h3>Cadastrar Novo Cliente</h3>
+                <p>Adicione um novo cliente ao sistema</p>
+            </a>
+
+            <a href="/pedido" class="botao-index">
+                <h3>Fazer Pedido</h3>
+                <p>Adicione um novo pedido ao sistema</p>
+            </a>
+
+        </div>
+
+    </body>
+
+
+</html>

@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
 
-@app.route('/clientes', methods=['GET', 'POST'])
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/cliente', methods=['GET', 'POST'])
 def clientes():
     if request.method == 'POST':
 
@@ -37,25 +41,25 @@ def pedido():
 
         conn = sqlite3.connect('restaurante.db')
         cursor = conn.cursor()
-        cursor.execute('''INSERT INTO pedido
+        cursor.execute('''INSERT INTO pedidos
             (id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total) VALUES (?, ?, ?, ?, ?)''', 
             (id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total))
 
         conn.commit()
         conn.close()
 
-        return render_template('cadastro_restaurante.html',
+        return render_template('cadastro_pedido.html',
                                mensagem=f"Pedido cadastrado com sucesso!")
-    return render_template('cadastro_restaurante.html', mensagem=None)
+    return render_template('cadastro_pedido.html', mensagem=None)
 
-@app.route('/listarpedidos')
-def listar():
+@app.route('/listar-pedidos')
+def listar_pedidos():
     conn = sqlite3.connect('restaurante.db')
     cursor = conn.cursor()
     
     query = '''
         SELECT p.id_pedido, p.id_cliente, c.nome, p.nome_prato, p.valor_unitario, p.qtd_pratos, p.valor_total
-        FROM pedido p
+        FROM pedidos p
         LEFT JOIN clientes c ON c.id_cliente = p.id_cliente
         ORDER BY c.nome
     '''
@@ -66,6 +70,58 @@ def listar():
     
     return render_template('listar_pedidos.html', pedidos = pedidos)
 
+
+@app.route('/editar-pedido/<int:id_pedido>', methods=['GET', 'POST'])
+def editar_pedido(id_pedido):
+    if request.method == 'GET':
+        conn = sqlite3.connect('restaurante.db')
+        cursor = conn.cursor()
+
+        query = '''
+            SELECT p.id_pedido, p.id_cliente, c.nome, p.nome_prato, p.valor_unitario, p.qtd_pratos, p.valor_total
+            FROM pedidos p
+            LEFT JOIN clientes c ON c.id_cliente = p.id_cliente
+            WHERE p.id_pedido = ?
+        '''
+        cursor.execute(query, (id_pedido,))
+        pedido = cursor.fetchone()
+        conn.commit()
+        conn.close()
+
+        return render_template('cadastro_pedido.html', modo='editar', pedido=pedido)
+
+    if request.method == 'POST':
+        id_cliente = request.form['id_cliente']
+        nome_prato = request.form['nome_prato']
+        valor_unitario = request.form['valor_unitario']
+        qtd_pratos = request.form['qtd_pratos']
+        valor_total = request.form['valor_total']
+
+        conn = sqlite3.connect('restaurante.db')
+        cursor = conn.cursor()
+
+        cursor.execute('''
+            UPDATE pedidos
+            SET id_cliente = ?, nome_prato = ?, valor_unitario = ?, qtd_pratos = ?, valor_total = ?
+            WHERE id_pedido = ?
+        ''', (id_cliente, nome_prato, valor_unitario, qtd_pratos, valor_total, id_pedido))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('listar_pedidos'))
+
+@app.route('/excluir-pedido/<int:id_pedido>', methods=['POST'])
+def excluir_pedido(id_pedido):
+    conn = sqlite3.connect('restaurante.db')
+    cursor = conn.cursor()
+
+    cursor.execute('DELETE FROM pedidos WHERE id_pedido = ?', (id_pedido,))
+
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('listar_pedidos'))
 
 if __name__ == '__main__':
     app.run(debug=True)

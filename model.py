@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('empresa.db')
+conn = sqlite3.connect('restaurante.db')
 cursor = conn.cursor()
 
 cliente = """ 

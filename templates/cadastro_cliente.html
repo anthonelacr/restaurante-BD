@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +24,12 @@
                     <a href="/listar-pedidos" class="opcao-cabecalho">Listar Pedidos</a>
                 </nav>
             </div>
+        </header>
 
-            <div class="bloco-formulario">
+        <main>  
+            <form class="bloco-formulario">
                 <div class="cabecalho-formulario">
-                    <h2>Cadastrar Cliente</h2>
+                    <h1>Cadastrar Cliente</h1>
                 </div>
 
                 <div class="campos-formulario">
@@ -47,14 +49,20 @@
                     <div class="campo">
                         <label for="telefone">Telefone</label>
                         <div class="input">
-                            <input type="tel" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+                            <input type="text" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <button class="botaoCadastro" type="submit">Confirmar</button>
 
-        </header>
+                </div>
+            </form>
+
+            {% if mensagem %}
+            <div class="mensagem">{{ mensagem }}</div>
+            {% endif %}
+            </main>
+
     </body>
 
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +10,72 @@
 
     <body>
         <header>
+            <div class="cabecalho-navegacao">
 
-            <div class="bloco-formulario">
-                <div class="cabecalho-formulario">
-                    <h2>Cadastrar Pedido</h2>
-                </div>
-
-                <div class="campos-formulario">
-
-                    <div class="campo">
-                        <label for="id_cliente">ID Cliente</label>
-                        <input type="text" id="id_cliente" name="id_cliente" placeholder="Ex: 123" required>
+                <nav>
+                    <div class="logo">
+                        <a href="/">Restaurante</a>
                     </div>
 
-                    <div class="campo">
-                        <label for="nome_prato">Nome Prato</label>
-                        <div class="input">
-                            <input type="nome_prato" id="nome_prato" name="nome_prato" placeholder="Ex: Strogonoff de Frango" required>
-                        </div>
-                    </div>
+                    <a href="/cliente" class="opcao-cabecalho">Cadastrar Clientes</a>
+                    <a href="/pedido" class="opcao-cabecalho">Cadastrar Pedidos</a>
+                    <a href="/listar-clientes" class="opcao-cabecalho">Listar Clientes</a>
+                    <a href="/listar-pedidos" class="opcao-cabecalho">Listar Pedidos</a>
+                </nav>
+            </div>
+        </header>
 
-                    <div class="campo">
-                        <label for="valor_unitario">Valor Unitário</label>
-                        <div class="input">
-                            <input type="valor_unitario" id="valor_unitario" name="valor_unitario" placeholder="Ex: 13.00" required>
-                        </div>
-                    </div>
-
-                    <div class="campo">
-                        <label for="qtd_pratos">Quantidade de Pratos</label>
-                        <div class="input">
-                            <input type="qtd_pratos" id="qtd_pratos" name="qtd_pratos" placeholder="Ex: 3" required>
-                        </div>
-                    </div>
-
-                    <div class="campo">
-                        <label for="valor_total">Valor Total</label>
-                        <div class="input">
-                            <input type="valor_total" id="valor_total" name="valor_total" placeholder="Ex: 67.67" required>
-                        </div>
-                    </div>
-
-                </div>
+        <main>
+        <div class="bloco-formulario">
+            <div class="cabecalho-formulario">
+                <h1>Cadastrar Pedido</h1>
             </div>
 
-        </header>
+            <form class="campos-formulario" method="POST" action="{{ url_for('editar_pedido', id_pedido=pedido[0]) if modo == 'editar' else url_for('pedido') }}">
+
+                <div class="campo">
+                    <label for="id_cliente">ID Cliente</label>
+                    <input type="text" id="id_cliente" name="id_cliente" placeholder="Ex: 123" value="{{ pedido[1] if pedido else '' }}" required>
+                </div>
+
+                <div class="campo">
+                    <label for="nome_prato">Nome Prato</label>
+                    <div class="input">
+                        <input type="text" id="nome_prato" name="nome_prato" placeholder="Ex: Strogonoff de Frango" value="{{ pedido[3] if pedido else '' }}" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="valor_unitario">Valor Unitário</label>
+                    <div class="input">
+                        <input type="number" id="valor_unitario" name="valor_unitario" placeholder="Ex: 13.00" value="{{ pedido[4] if pedido else '' }}" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="qtd_pratos">Quantidade de Pratos</label>
+                    <div class="input">
+                        <input type="number" id="qtd_pratos" name="qtd_pratos" placeholder="Ex: 3" value="{{ pedido[5] if pedido else '' }}" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="valor_total">Valor Total</label>
+                    <div class="input">
+                        <input type="number" id="valor_total" name="valor_total" placeholder="Ex: 67.67" value="{{ pedido[4] if pedido else '' }}" required>
+                    </div>
+                </div>
+
+                <button class="botaoCadastro" type="submit">Confirmar</button>
+
+            </form>
+
+            {% if mensagem %}
+            <div class="mensagem">{{ mensagem }}</div>
+            {% endif %}
+
+        </div>
+        </main>
     </body>
 
 </html>
