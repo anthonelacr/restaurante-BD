@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos Cadastrados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+            
+        <div class="cabecalho-navegacao">
+
+            <nav>
+                <div class="logo">
+                    <a href="/">Restaurante</a>
+                </div>
+
+                <a href="/cliente" class="opcao-cabecalho">Cadastrar Clientes</a>
+                <a href="/pedido" class="opcao-cabecalho">Cadastrar Pedidos</a>
+                <a href="/listar-clientes" class="opcao-cabecalho">Listar Clientes</a>
+                <a href="/listar-pedidos" class="opcao-cabecalho">Listar Pedidos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <div class="bloco-formulario">
+        <div class="cabecalho-formulario">
+            <h1>Clientes Cadastrados</h1>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Cliente</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ pedido[0] }}</td>
+                    <td>{{ pedido[1] }}</td>
+                    <td>{{ pedido[2] }}</td>
+                    <td>{{ pedido[3] }}</td>
+                    <td>{{ pedido[4] }}</td>
+
+                    <td>
+                        <div class="coluna-acoes">
+                            <a href="{{ url_for('editar_cliente', id_cliente=cliente[0]) }}">🖊</a>
+                            <form method="post" action="{{ url_for('excluir_cliente', id_cliente=cliente[0]) }}">
+                                <button class="excluir" type="submit" onclick="return confirm('Deseja excluir esse cliente?')">🗑️</button>
+                            </form> 
+                        </div>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <br>
+    <a href="/cliente" class="novoCadastro">← Novo Cadastro</a>
+    </main>
+</body>
+</html>
