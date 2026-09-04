@@ -82,7 +82,7 @@ body {
 .logo {
   text-decoration: none;
   color: var(--md-sys-color-on-background);
-  font-size: 2.5vw;
+  font-size: 2.8vw;
   padding: 0 5vw 0 2.5vw;
 }
 
@@ -94,3 +94,82 @@ a {
 a:hover {
   color: var(--md-sys-color-surface-tint);
 } 
+
+.bloco-formulario {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.1vw;
+  border: var(--md-sys-color-secondary) 0.2vw solid;
+  width: 70%;
+  margin: 5vw auto;
+  padding-bottom: 0.8vw;
+}
+
+.cabecalho-formulario {
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 2.5vw;
+  font-weight: bold;
+  border-radius: 1vw 1vw 0 0;
+  padding: 0.8vw 1vw;
+  background: var(--md-sys-color-secondary);
+}
+
+.cabecalho-formulario h2 {
+  background: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
+.campos-formulario {
+  padding: 1vw 1.5vw 0 1.5vw;
+}
+
+.campo {
+  margin: 1vw auto;
+  width: 100%;
+}
+
+.campo label {
+  font-size: 2vw;
+}
+
+input {
+  display: block;
+  border-radius: 0.5vw;
+  border: var(--md-sys-color-outline) 0.2vw solid;
+  padding: 0.5vw 1vw;
+  background: transparent;
+  color: var(--md-sys-color-on-background);
+  font-size: 1.8vw;
+  width: 100%;
+}
+
+input:hover {
+  border: var(--md-sys-color-outline) 0.3vw solid;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  border: var(--md-sys-color-outline) 0.8vw solid;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: var(--md-sys-color-outline) 0.3vw;
+}
+
+.botaoCadastro {
+  display: block;
+  margin-left: auto;
+  padding: 0.5vw;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px 1px rgba(52, 49, 48, 0.2);
+  cursor: pointer;
+}
