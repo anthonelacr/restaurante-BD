@@ -20,7 +20,7 @@ pedidos = '''
     valor_unitario DOUBLE NOT NULL,
     qtd_pratos INTEGER NOT NULL,
     valor_total DOUBLE NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON DELETE CASCADE
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente) ON DELETE CASCADE
     );
     '''
 

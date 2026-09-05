@@ -41,28 +41,28 @@
                 <div class="campo">
                     <label for="nome_prato">Nome Prato</label>
                     <div class="input">
-                        <input type="text" id="nome_prato" name="nome_prato" placeholder="Ex: Strogonoff de Frango" value="{{ pedido[2] if pedido else '' }}" required>
+                        <input type="text" id="nome_prato" name="nome_prato" placeholder="Ex: Strogonoff de Frango" value="{{ pedido[3] if pedido else '' }}" required>
                     </div>
                 </div>
 
                 <div class="campo">
                     <label for="valor_unitario">Valor Unitário</label>
                     <div class="input">
-                        <input type="number" id="valor_unitario" name="valor_unitario" placeholder="Ex: 13.00" value="{{ pedido[3] if pedido else '' }}" required>
+                        <input type="number" id="valor_unitario" name="valor_unitario" placeholder="Ex: 13.00" value="{{ pedido[4] if pedido else '' }}" required>
                     </div>
                 </div>
 
                 <div class="campo">
                     <label for="qtd_pratos">Quantidade de Pratos</label>
                     <div class="input">
-                        <input type="number" id="qtd_pratos" name="qtd_pratos" placeholder="Ex: 3" value="{{ pedido[4] if pedido else '' }}" required>
+                        <input type="number" id="qtd_pratos" name="qtd_pratos" placeholder="Ex: 3" value="{{ pedido[5] if pedido else '' }}" required>
                     </div>
                 </div>
 
                 <div class="campo">
                     <label for="valor_total">Valor Total</label>
                     <div class="input">
-                        <input type="number" id="valor_total" name="valor_total" placeholder="Ex: 67.67" value="{{ pedido[5] if pedido else '' }}" required>
+                        <input type="number" id="valor_total" name="valor_total" placeholder="Ex: 67.67" value="{{ pedido[6] if pedido else '' }}" required>
                     </div>
                 </div>
 
