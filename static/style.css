@@ -1,3 +1,4 @@
+/*variaveis de cor do Material Theme Builder*/
 :root {
   --md-sys-color-primary: rgb(255 211 194);
   --md-sys-color-surface-tint: rgb(255 181 152);
@@ -256,7 +257,7 @@ p {
   transform: translateY(-2px);
 }
 
-.botao-index h3 {
+.botao-index h2 {
   font-size: clamp(1.25rem, 2.5vw, 2.2rem);
   text-align: center;
 }
@@ -276,6 +277,8 @@ td a {
   text-decoration: none;
   font-size: clamp(1.3rem, 1.5vw, 1.8rem);
   color: var(--md-sys-color-on-background);
+  min-width: 44px;
+  min-height: 44px;
 }
 
 td a:hover {
@@ -287,6 +290,8 @@ td a:hover {
   border: none;
   font-size: clamp(1.3rem, 1.5vw, 1.8rem);
   color: var(--md-sys-color-on-background);
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .excluir:hover {

@@ -57,9 +57,9 @@
 
                     <td>
                         <div class="coluna-acoes">
-                            <a href="{{ url_for('editar_pedido', id_pedido=pedido[0]) }}">🖊</a>
+                            <a href="{{ url_for('editar_pedido', id_pedido=pedido[0]) }}" aria-label="Editar pedido {{ pedido[0] }}">🖊</a>
                             <form method="post" action="{{ url_for('excluir_pedido', id_pedido=pedido[0]) }}">
-                                <button class="excluir" type="submit" onclick="return confirm('Deseja excluir esse pedido?')">🗑️</button>
+                                <button class="excluir" type="submit" aria-label="Excluir pedido {{ pedido[0] }}" onclick="return confirm('Deseja excluir esse pedido?')">🗑️</button>
                             </form> 
                         </div>
                     </td>
