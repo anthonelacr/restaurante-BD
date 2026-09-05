@@ -72,14 +72,16 @@ def clientes():
                 (nome, email, telefone) VALUES (?, ?, ?)''', (nome, email, telefone))
             conn.commit()
             mensagem = f"Cliente {nome} cadastrado com sucesso!"
+            tipo_mensagem = "sucesso"
         except sqlite3.IntegrityError:
             mensagem = f"Erro: já existe um cliente cadastrado com o email {email}."
+            tipo_mensagem = "erro"
         finally:
             conn.close()
 
-        return render_template('cadastro_cliente.html', mensagem=mensagem)
+        return render_template('cadastro_cliente.html', mensagem=mensagem, tipo_mensagem=tipo_mensagem)
     
-    return render_template('cadastro_cliente.html', mensagem=None)
+    return render_template('cadastro_cliente.html', mensagem=None, tipo_mensagem=None)
 
 
 @app.route('/listar-clientes')
@@ -130,7 +132,8 @@ def editar_cliente(id_cliente):
             conn.close()
             cliente = buscar_cliente(id_cliente)
             mensagem = f"Erro: já existe um cliente cadastrado com o email {email}."
-            return render_template('cadastro_cliente.html', modo='editar', cliente=cliente, mensagem=mensagem)
+            tipo_mensagem = "erro"
+            return render_template('cadastro_cliente.html', modo='editar', cliente=cliente, mensagem=mensagem, tipo_mensagem=tipo_mensagem)
 
         conn.close()
         return redirect(url_for('listar_clientes'))
@@ -167,11 +170,13 @@ def pedido():
             valor_total = float(valor_total)
         except ValueError:
             mensagem = "Erro: valor unitário, quantidade e valor total precisam ser números válidos."
-            return render_template('cadastro_pedido.html', mensagem=mensagem)
+            tipo_mensagem = "erro"
+            return render_template('cadastro_pedido.html', mensagem=mensagem, tipo_mensagem=tipo_mensagem)
 
         if not cliente_existe(id_cliente):
             mensagem = f"Erro: não existe cliente cadastrado com o ID {id_cliente}."
-            return render_template('cadastro_pedido.html', mensagem=mensagem)
+            tipo_mensagem = "erro"
+            return render_template('cadastro_pedido.html', mensagem=mensagem, tipo_mensagem=tipo_mensagem)
 
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -182,7 +187,7 @@ def pedido():
         conn.commit()
         conn.close()
 
-        return render_template('cadastro_pedido.html', mensagem="Pedido cadastrado com sucesso!")
+        return render_template('cadastro_pedido.html', mensagem="Pedido cadastrado com sucesso!", tipo_mensagem="sucesso")
 
     return render_template('cadastro_pedido.html', mensagem=None)
 
@@ -230,12 +235,12 @@ def editar_pedido(id_pedido):
         except ValueError:
             pedido = buscar_pedido(id_pedido)
             mensagem = "Erro: valor unitário, quantidade e valor total precisam ser números válidos."
-            return render_template('cadastro_pedido.html', modo='editar', pedido=pedido, mensagem=mensagem)
+            return render_template('cadastro_pedido.html', modo='editar', pedido=pedido, mensagem=mensagem, tipo_mensagem="erro")
 
         if not cliente_existe(id_cliente):
             pedido = buscar_pedido(id_pedido)
             mensagem = f"Erro: não existe cliente cadastrado com o ID {id_cliente}."
-            return render_template('cadastro_pedido.html', modo='editar', pedido=pedido, mensagem=mensagem)
+            return render_template('cadastro_pedido.html', modo='editar', pedido=pedido, mensagem=mensagem, tipo_mensagem="erro")
 
         conn = get_db_connection()
         cursor = conn.cursor()

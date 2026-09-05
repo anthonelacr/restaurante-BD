@@ -69,12 +69,11 @@
                 <button class="botaoCadastro" type="submit">Confirmar</button>
 
             </form>
-
-            {% if mensagem %}
-            <div class="mensagem">{{ mensagem }}</div>
-            {% endif %}
-
         </div>
+
+        {% if mensagem %}
+        <div class="mensagem mensagem-{{ tipo_mensagem }}">{{ mensagem }}</div>
+        {% endif %}
         </main>
     </body>
 

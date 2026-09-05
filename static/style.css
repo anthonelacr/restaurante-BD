@@ -186,12 +186,16 @@ thead tr {
   font-weight: bold;
 }
 
-tbody tr:hover {
+td {
+  padding: 0.6vw;
+}
+
+tr:hover {
   background-color: var(--md-sys-color-inverse-on-surface);
 }
 
 thead th {
-  text-align: left;
+  text-align: center;
   padding: 0.8vw;
 }
 
@@ -288,4 +292,20 @@ td a:hover {
 .excluir:hover {
   transform: translateY(-2px);
   cursor: pointer;
+}
+
+.mensagem {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  text-align: left;
+  padding: 0.5vw;
+}
+
+.mensagem-sucesso {
+  color: var(--md-sys-color-tertiary);
+  border-left: 4px solid var(--md-sys-color-tertiary);
+}
+
+.mensagem-erro {
+  color: var(--md-sys-color-error);
+  border-left: 4px solid var(--md-sys-color-error);
 }
